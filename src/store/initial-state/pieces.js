@@ -1,273 +1,354 @@
-export default [{
-  id: 0,
-  name: 'white-king',
-  value: '&#9818',
-  position: {
-    line: 1,
-    square: 'e'
+export default [
+  {
+    id: 0,
+    name: "king",
+    color: "white",
+    value: "&#9818",
+    captured: false,
+    position: {
+      x: 0,
+      y: 4
+    }
+  },
+  {
+    id: 1,
+    name: "queen",
+    color: "white",
+    value: "&#9819",
+    captured: false,
+    position: {
+      x: 0,
+      y: 3
+    }
+  },
+  {
+    id: 2,
+    name: "rook",
+    color: "white",
+    value: "&#9820",
+    captured: false,
+    position: {
+      x: 0,
+      y: 0
+    }
+  },
+  {
+    id: 3,
+    name: "rook",
+    color: "white",
+    value: "&#9820",
+    captured: false,
+    position: {
+      x: 0,
+      y: 7
+    }
+  },
+  {
+    id: 4,
+    name: "bishop",
+    color: "white",
+    value: "&#9821",
+    captured: false,
+    position: {
+      x: 0,
+      y: 2
+    }
+  },
+  {
+    id: 5,
+    name: "bishop",
+    color: "white",
+    value: "&#9821",
+    captured: false,
+    position: {
+      x: 0,
+      y: 5
+    }
+  },
+  {
+    id: 6,
+    name: "knight",
+    color: "white",
+    value: "&#9822",
+    captured: false,
+    position: {
+      x: 0,
+      y: 1
+    }
+  },
+  {
+    id: 7,
+    name: "knight",
+    color: "white",
+    value: "&#9822",
+    captured: false,
+    position: {
+      x: 0,
+      y: 6
+    }
+  },
+  {
+    id: 8,
+    name: "pawn",
+    color: "white",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 1,
+      y: 0
+    }
+  },
+  {
+    id: 9,
+    name: "pawn",
+    color: "white",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 1,
+      y: 1
+    }
+  },
+  {
+    id: 10,
+    name: "pawn",
+    color: "white",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 1,
+      y: 2
+    }
+  },
+  {
+    id: 11,
+    name: "pawn",
+    color: "white",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 1,
+      y: 3
+    }
+  },
+  {
+    id: 12,
+    name: "pawn",
+    color: "white",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 1,
+      y: 4
+    }
+  },
+  {
+    id: 13,
+    name: "pawn",
+    color: "white",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 1,
+      y: 5
+    }
+  },
+  {
+    id: 14,
+    name: "pawn",
+    color: "white",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 1,
+      y: 6
+    }
+  },
+  {
+    id: 15,
+    name: "pawn",
+    color: "white",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 1,
+      y: 7
+    }
+  },
+  {
+    id: 16,
+    name: "king",
+    color: "black",
+    value: "&#9818",
+    captured: false,
+    position: {
+      x: 7,
+      y: 4
+    }
+  },
+  {
+    id: 17,
+    name: "queen",
+    color: "black",
+    value: "&#9819",
+    captured: false,
+    position: {
+      x: 7,
+      y: 3
+    }
+  },
+  {
+    id: 18,
+    name: "rook",
+    color: "black",
+    value: "&#9820",
+    captured: false,
+    position: {
+      x: 7,
+      y: 0
+    }
+  },
+  {
+    id: 19,
+    name: "rook",
+    color: "black",
+    value: "&#9820",
+    captured: false,
+    position: {
+      x: 7,
+      y: 7
+    }
+  },
+  {
+    id: 20,
+    name: "bishop",
+    color: "black",
+    value: "&#9821",
+    captured: false,
+    position: {
+      x: 7,
+      y: 2
+    }
+  },
+  {
+    id: 21,
+    name: "bishop",
+    color: "black",
+    value: "&#9821",
+    captured: false,
+    position: {
+      x: 7,
+      y: 5
+    }
+  },
+  {
+    id: 22,
+    name: "knight",
+    color: "black",
+    value: "&#9822",
+    captured: false,
+    position: {
+      x: 7,
+      y: 6
+    }
+  },
+  {
+    id: 23,
+    name: "knight",
+    color: "black",
+    value: "&#9822",
+    captured: false,
+    position: {
+      x: 7,
+      y: 1
+    }
+  },
+  {
+    id: 24,
+    name: "pawn",
+    color: "black",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 6,
+      y: 0
+    }
+  },
+  {
+    id: 25,
+    name: "pawn",
+    color: "black",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 6,
+      y: 1
+    }
+  },
+  {
+    id: 26,
+    name: "pawn",
+    color: "black",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 6,
+      y: 2
+    }
+  },
+  {
+    id: 27,
+    name: "pawn",
+    color: "black",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 6,
+      y: 3
+    }
+  },
+  {
+    id: 28,
+    name: "pawn",
+    color: "black",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 6,
+      y: 4
+    }
+  },
+  {
+    id: 29,
+    name: "pawn",
+    color: "black",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 6,
+      y: 5
+    }
+  },
+  {
+    id: 30,
+    name: "pawn",
+    color: "black",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 6,
+      y: 6
+    }
+  },
+  {
+    id: 31,
+    name: "pawn",
+    color: "black",
+    value: "&#9823",
+    captured: false,
+    position: {
+      x: 6,
+      y: 7
+    }
   }
-}, {
-  id: 1,
-  name: 'white-queen',
-  value: '&#9819',
-  position: {
-    line: 1,
-    square: 'd'
-  }
-}, {
-  id: 2,
-  name: 'white-rook',
-  value: '&#9820',
-  position: {
-    line: 1,
-    square: 'a'
-  }
-}, {
-  id: 3,
-  name: 'white-rook',
-  value: '&#9820',
-  position: {
-    line: 1,
-    square: 'h'
-  }
-}, {
-  id: 4,
-  name: 'white-bishop',
-  value: '&#9821',
-  position: {
-    line: 1,
-    square: 'c'
-  }
-}, {
-  id: 5,
-  name: 'white-bishop',
-  value: '&#9821',
-  position: {
-    line: 1,
-    square: 'f'
-  }
-}, {
-  id: 6,
-  name: 'white-knight',
-  value: '&#9822',
-  position: {
-    line: 1,
-    square: 'b'
-  }
-}, {
-  id: 7,
-  name: 'white-knight',
-  value: '&#9822',
-  position: {
-    line: 1,
-    square: 'g'
-  }
-}, {
-  id: 8,
-  name: 'white-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 2,
-    square: 'a'
-  }
-}, {
-  id: 9,
-  name: 'white-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 2,
-    square: 'b'
-  }
-}, {
-  id: 10,
-  name: 'white-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 2,
-    square: 'c'
-  }
-}, {
-  id: 11,
-  name: 'white-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 2,
-    square: 'd'
-  }
-}, {
-  id: 12,
-  name: 'white-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 2,
-    square: 'e'
-  }
-}, {
-  id: 13,
-  name: 'white-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 2,
-    square: 'f'
-  }
-}, {
-  id: 14,
-  name: 'white-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 2,
-    square: 'g'
-  }
-}, {
-  id: 15,
-  name: 'white-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 2,
-    square: 'h'
-  }
-}, {
-  id: 16,
-  name: 'black-king',
-  value: '&#9818',
-  position: {
-    line: 8,
-    square: 'e'
-  }
-}, {
-  id: 17,
-  name: 'black-queen',
-  value: '&#9819',
-  position: {
-    line: 8,
-    square: 'd'
-  }
-}, {
-  id: 18,
-  name: 'black-rook',
-  value: '&#9820',
-  position: {
-    line: 8,
-    square: 'a'
-  }
-}, {
-  id: 19,
-  name: 'black-rook',
-  value: '&#9820',
-  position: {
-    line: 8,
-    square: 'h'
-  }
-}, {
-  id: 20,
-  name: 'black-bishop',
-  value: '&#9821',
-  position: {
-    line: 8,
-    square: 'c'
-  }
-}, {
-  id: 21,
-  name: 'black-bishop',
-  value: '&#9821',
-  position: {
-    line: 8,
-    square: 'f'
-  }
-}, {
-  id: 22,
-  name: 'black-knight',
-  value: '&#9822',
-  position: {
-    line: 8,
-    square: 'g'
-  }
-}, {
-  id: 23,
-  name: 'black-knight',
-  value: '&#9822',
-  position: {
-    line: 8,
-    square: 'b'
-  }
-}, {
-  id: 24,
-  name: 'black-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 7,
-    square: 'a'
-  }
-}, {
-  id: 25,
-  name: 'black-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 7,
-    square: 'b'
-  }
-}, {
-  id: 26,
-  name: 'black-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 7,
-    square: 'c'
-  }
-}, {
-  id: 27,
-  name: 'black-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 7,
-    square: 'd'
-  }
-}, {
-  id: 28,
-  name: 'black-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 7,
-    square: 'e'
-  }
-}, {
-  id: 29,
-  name: 'black-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 7,
-    square: 'f'
-  }
-}, {
-  id: 30,
-  name: 'black-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 7,
-    square: 'g'
-  }
-}, {
-  id: 31,
-  name: 'black-pawn',
-  isFirstMove: true,
-  value: '&#9823',
-  position: {
-    line: 7,
-    square: 'h'
-  }
-}]
+];

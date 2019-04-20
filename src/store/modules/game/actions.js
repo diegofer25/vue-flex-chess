@@ -1,21 +1,21 @@
 export default {
-  setTurn ({ state, commit }) {
-    const color = state.turn === 'white' ? 'black' : 'white'
-    commit('SET_TURN', color)
+  endTurn ({ state, commit }) {
+    const turn = { white: 'black', black: 'white' }
+    commit('SET_TURN', turn[state.turn])
   },
 
-  upDatePiecesPositions ({ state, commit }) {
+  updateBoard ({ state, commit }) {
     commit('SET_BOARD', state.board.map(line => {
 
-      if (state.pieces.some(({ position }) => position.line == line.name)) {
+      if (state.pieces.some(({ captured, position }) => position.x === line.id && !captured)) {
 
         line.squares = line.squares.map(square => {
 
-          if (state.pieces.some(({ position }) => position.square == square.name)) {
+          if (state.pieces.some(({ captured, position }) => position.y === square.id && !captured)) {
 
             square.content = state.pieces.find(({ position }) => {
 
-              return position.square == square.name && position.line == line.name
+              return position.y === square.id && position.x === line.id
             })
           } else {
             square.content = undefined
@@ -33,17 +33,23 @@ export default {
     }))
   },
 
-  showMoves ({ state, commit }) {
+  showMoves ({ state, commit, getters }, piece) {
+
+    const moves = getters.getMovesFromPiece(piece)
+
     commit('SET_BOARD', state.board.map(line => {
 
-      line.squares = line.squares.map(square => {
+      if (moves.some(m => m.x === line.id)) {
 
-        // if (!square.canMove) square.canMove = true
-        if (!square.canMove) square.canMove = true
+        line.squares = line.squares.map(square => {
 
-        return square
-      })
+          if (moves.some(m => m.y === square.id)) {
+            square.canMove = true
+          }
+          return square
+        })
 
+      }
       return line
     }))
   },
@@ -62,12 +68,16 @@ export default {
     }))
   },
 
-  setPiecePosition ({ state, commit }, { id, newPosition }) {
+  setPiecePosition ({ state, commit, dispatch }, { id, newPosition }) {
     commit('SET_PIECES', state.pieces.map(piece => {
-      if (piece.id == id) {
+      if (piece.x === newPosition.x && piece.y === newPosition.y) {
+        piece.captured = true
+      }
+      if (piece.id === id) {
         piece.position = newPosition
       }
       return piece
     }))
+    dispatch('updateBoard')
   }
 }

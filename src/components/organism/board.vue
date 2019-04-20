@@ -5,9 +5,6 @@
         v-for="line in board"
         :key="line.name"
         :line="line"
-        @update-piece="updatePiece"
-        @show-moves="showMoves"
-        @finish-move="finishMove"
       />
     </div>
   </div>
@@ -30,21 +27,10 @@ export default {
     turn: 'white'
   }),
   created () {
-    const vue = this
-    vue.upDatePiecesPositions()
+    this.updateBoard()
   },
   methods: {
-    ...mapActions('game', [
-      'upDatePiecesPositions',
-      'showMoves',
-      'finishMove',
-      'setPiecePosition'
-    ]),
-
-    updatePiece (piece) {
-      this.setPiecePosition(piece)
-      this.upDatePiecesPositions()
-    }
+    ...mapActions('game', ['updateBoard']),
   },
 }
 </script>
@@ -57,5 +43,6 @@ export default {
     margin: 0 auto;
     width: 800px;
     height: 800px;
+    user-select: none;
   }
 </style>

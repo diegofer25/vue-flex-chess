@@ -4,7 +4,9 @@
     @dragover.prevent
     @drop="getMove"
   >
-    <slot />
+    <div :class="{ 'can-move': square.canMove  }">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -28,15 +30,19 @@ export default {
     }
   },
   methods: {
-    ...mapActions('game', ['setTurn']),
+    ...mapActions('game', [
+      'endTurn',
+      'setPiecePosition',
+      'finishMove'
+    ]),
     getMove (e) {
       const vue = this
       e.preventDefault();
-      var id = e.dataTransfer.getData("pieceId")
-      if (!vue.$slots.default && vue.square.canMove) {
-        vue.setTurn()
-        vue.$emit('update-piece', { id, newPosition: this.position })
-        vue.$emit('finish-move')
+      var id = parseInt(e.dataTransfer.getData("pieceId"))
+      if (vue.square.canMove) {
+        vue.setPiecePosition({ id, newPosition: this.position })
+        vue.finishMove()
+        vue.endTurn()
       }
     }
   },
@@ -52,9 +58,10 @@ export default {
     &.black-square {
       background-color: #757575;
     }
-    &.green-square {
-      background-color: rgb(120, 201, 0);
-      border: 1px solid black;
+    .can-move {
+      height: 100%;
+      width: 100%;
+      background-color: rgba(121, 201, 0, 0.5);
     }
   }
 </style>

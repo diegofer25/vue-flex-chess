@@ -1,11 +1,11 @@
 <template>
   <div class="ch-piece">
-    <div :class="`piece ${color}-piece`">
+    <div class="piece" :class="[`${color}-piece`, { draggable }]">
       <span
-        draggable="true"
+        :draggable="draggable"
         v-html="piece.value"
         @dragstart="movePiece"
-        @dragend="$emit('finish-move', piece)"
+        @dragend="finishMove(piece)"
       />
     </div>
   </div>
@@ -13,7 +13,7 @@
 
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'ch-piece',
   props: {
@@ -24,14 +24,21 @@ export default {
   },
   computed: {
     ...mapState('game', ['turn']),
+    draggable () {
+      return this.piece.color === this.turn
+    },
     color () {
-      return this.piece.name.includes('black') ? 'black' : 'white'
+      return this.piece.color === 'black' ? 'black' : 'white'
     }
   },
   methods: {
+    ...mapActions('game', [
+      'showMoves',
+      'finishMove',
+    ]),
     movePiece (event) {
-      if (this.piece.name.includes(this.turn)){
-        this.$emit('show-moves', this.piece)
+      if (this.piece.color === this.turn) {
+        this.showMoves(this.piece)
         event.dataTransfer.setData("pieceId", this.piece.id)
       } else {
         // eslint-disable-next-line no-console
@@ -50,7 +57,9 @@ export default {
       font-size: 5.35rem;
       text-align: center;
       text-justify: auto;
-      cursor: grab;
+      &.draggable {
+        cursor: grab;
+      }
       &.black-piece {
         color: black;
       }
