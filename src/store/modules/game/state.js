@@ -1,4 +1,4 @@
-import { board, pieces } from '@/static-data'
+import { board, pieces } from '@/store/initial-state'
 
 export default {
   turn: 'white',
