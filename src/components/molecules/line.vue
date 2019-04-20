@@ -4,9 +4,21 @@
       <ch-square
         v-for="(square, index) in line.squares"
         :key="square.name"
-        :color="checkColor(line.name, index + 1)"
+        :color="checkColor(parseInt(line.name), index + 1, square)"
+        :square="square"
+        :position="{
+          line: line.name,
+          square: square.name
+        }"
+        @update-piece="(payload) => $emit('update-piece', payload)"
+        @finish-move="(e) => $emit('finish-move', e)"
       >
-        <ch-piece v-if="square.content" :piece="square.content" />
+        <ch-piece
+          v-if="square.content"
+          :piece="square.content"
+          @show-moves="(e) => $emit('show-moves', e)"
+          @finish-move="(e) => $emit('finish-move', e)"
+        />
       </ch-square>
     </div>
   </div>
@@ -27,18 +39,20 @@ export default {
     }
   },
   methods: {
-    checkColor (line, square) {
+    checkColor (line, index, square) {
+      if (square.canMove) {
+        return 'green'
+      }
       if (line % 2 === 0) {
-        if (square % 2 === 0) {
+        if (index % 2 === 0) {
           return 'black'
         }
         return 'white'
-      } else {
-        if (square % 2 === 0) {
-          return 'white'
-        }
-        return 'black'
       }
+      if (index % 2 === 0) {
+        return 'white'
+      }
+      return 'black'
     }
   },
 }

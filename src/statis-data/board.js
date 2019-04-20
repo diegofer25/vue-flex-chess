@@ -1,27 +1,35 @@
 const getSquares = (line) => {
   return [{
     name: 'a',
+    canMove: false,
     line
   }, {
     name: 'b',
+    canMove: false,
     line
   }, {
     name: 'c',
+    canMove: false,
     line
   }, {
     name: 'd',
+    canMove: false,
     line
   }, {
     name: 'e',
+    canMove: false,
     line
   }, {
     name: 'f',
+    canMove: false,
     line
   }, {
     name: 'g',
+    canMove: false,
     line
   }, {
     name: 'h',
+    canMove: false,
     line
   }]
 }

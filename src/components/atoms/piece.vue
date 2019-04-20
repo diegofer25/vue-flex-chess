@@ -1,27 +1,44 @@
 <template>
   <div class="ch-piece">
-    <div :class="`piece ${color}-piece`" v-html="$options.pieces[piece]"></div>
+    <div :class="`piece ${color}-piece`">
+      <span
+        draggable="true"
+        v-html="piece.value"
+        @dragstart="movePiece"
+        @dragend="$emit('finish-move', piece)"
+      />
+    </div>
   </div>
 </template>
 
 
 <script>
-import pieces from '@/components/bosons/pieces'
-
+import { mapState } from 'vuex'
 export default {
   name: 'ch-piece',
   props: {
     piece: {
-      type: String,
+      type: Object,
       required: true
     }
   },
   computed: {
+    ...mapState('game', ['turn']),
     color () {
-      return this.piece.includes('black') ? 'black' : 'white'
+      return this.piece.name.includes('black') ? 'black' : 'white'
     }
   },
-  pieces
+  methods: {
+    movePiece (event) {
+      if (this.piece.name.includes(this.turn)){
+        this.$emit('show-moves', this.piece)
+        event.dataTransfer.setData("pieceId", this.piece.id)
+      } else {
+        // eslint-disable-next-line no-console
+        console.log('Is not your turn')
+      }
+    }
+  },
 }
 </script>
 
@@ -39,7 +56,7 @@ export default {
       }
       &.white-piece {
         color: white;
-        text-shadow: 0 0 5px #000000;
+        text-shadow: 1px 1px 5px #000000;
       }
     }
   }

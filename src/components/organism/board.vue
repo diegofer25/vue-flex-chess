@@ -5,81 +5,105 @@
         v-for="line in board"
         :key="line.name"
         :line="line"
+        @update-piece="updatePiece"
+        @show-moves="showMoves"
+        @finish-move="finishMove"
       />
     </div>
-    <form @submit.prevent="setSquare(line, square)">
-      <div>
-        <label for="piece">Select a Piece:</label>
-        <select v-model="piece">
-          <option
-            v-for="name in $options.pieces"
-            :key="name"
-            :value="name"
-            v-text="name"
-          />
-        </select>
-      </div>
-      <div>
-        <label for="line">Select a Line:</label>
-        <select v-model="line">
-          <option
-            v-for="num in Array(8).fill().map((x,i) => i +1)"
-            :key="num"
-            :value="num"
-            v-text="num"
-          />
-        </select>
-      </div>
-      <div>
-        <label for="square">Select a Square:</label>
-        <select v-model="square">
-          <option
-            v-for="letter in ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']"
-            :key="letter"
-            :value="letter"
-            v-text="letter"
-          />
-        </select>
-      </div>
-      <div>
-        <input type="submit" value="Put piece">
-      </div>
-    </form>
   </div>
 </template>
 
 
 <script>
-import boardData from '@/components/bosons/board-static-data'
+import { mapState } from 'vuex'
 import chLine from '@/components/molecules/line'
-import pieces from '@/components/bosons/pieces'
 
 export default {
   name: 'ch-board',
   components: {
     chLine
   },
+  computed: {
+    ...mapState()
+  },
   data: () => ({
-    board: boardData,
-    line: 0,
-    square: '',
-    piece: ''
+    turn: 'white'
   }),
-  pieces: Object.keys(pieces),
+  created () {
+    const vue = this
+    vue.upDatePiecesPositions()
+  },
   methods: {
-    setSquare(line, letter) {
+    showMoves () {
       const vue = this
-      vue.board = vue.board.map(item => {
-        if (item.name == line) {
-          item.squares = item.squares.map(item => {
-            if (item.name === letter) {
-              item.content = vue.piece
+      vue.board = vue.board.map(line => {
+
+        line.squares = line.squares.map(square => {
+
+          // if (!square.canMove) square.canMove = true
+          if (!square.canMove) square.canMove = true
+
+          return square
+        })
+
+        return line
+      })
+    },
+
+    finishMove () {
+      const vue = this
+      vue.board = vue.board.map(line => {
+
+        line.squares = line.squares.map(square => {
+
+          square.canMove = false
+
+          return square
+        })
+
+        return line
+      })
+    },
+
+    upDatePiecesPositions() {
+      const vue = this
+      vue.board = vue.board.map(line => {
+
+        if (vue.pieces.some(({ position }) => position.line == line.name)) {
+
+          line.squares = line.squares.map(square => {
+
+            if (vue.pieces.some(({ position }) => position.square == square.name)) {
+
+              square.content = vue.pieces.find(({ position }) => {
+
+                return position.square == square.name && position.line == line.name
+              })
+            } else {
+              square.content = undefined
             }
-            return item
+            return square
+          })
+        } else {
+          line.squares = line.squares.map(square => {
+
+            square.content = undefined
+            return square
           })
         }
-        return item
+        return line
       })
+    },
+
+    updatePiece ({ id, newPosition }) {
+      const vue = this
+      vue.pieces = vue.pieces.map(piece => {
+        if (piece.id == id) {
+          piece.position = newPosition
+        }
+        return piece
+      })
+      vue.upDatePiecesPositions()
     }
   },
 }
