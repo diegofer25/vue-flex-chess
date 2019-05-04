@@ -1,0 +1,19 @@
+$colors-list: (
+  ("dark-grey", #404040),
+  ("grey", #808080),
+  ("light-grey", #9e9e9e),
+  ("white", white)
+);
+
+@each $color in $colors-list {
+  $name: nth($color, 1);
+  $value: nth($color, 2);
+
+  .bg-#{$name} {
+    background-color: $value !important;
+  }
+
+  .text-#{$name} {
+    color: $value !important;
+  }
+}

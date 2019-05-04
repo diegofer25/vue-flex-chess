@@ -22,17 +22,17 @@ $values: (
 
     .#{$spacingKey} {
       &-a-#{$name} {
-        #{$spacingValue}: $size;
+        #{$spacingValue}: $size !important;
       }
 
       &-x-#{$name} {
-        #{$spacingValue}-left: $size;
-        #{$spacingValue}-right: $size;
+        #{$spacingValue}-left: $size !important;
+        #{$spacingValue}-right: $size !important;
       }
 
       &-y-#{$name} {
-        #{$spacingValue}-top: $size;
-        #{$spacingValue}-bottom: $size;
+        #{$spacingValue}-top: $size !important;
+        #{$spacingValue}-bottom: $size !important;
       }
 
       @each $position in $positions {
@@ -40,7 +40,7 @@ $values: (
         $positionValue: nth($position, 2);
 
         &-#{$positionKey}-#{$name} {
-          #{$spacingValue}-#{$positionValue}: $size;
+          #{$spacingValue}-#{$positionValue}: $size !important;
         }
       }
     }

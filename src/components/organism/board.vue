@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="ch-board">
+  <div class="ch-board flex row fill-height align-item-center">
+    <div class="">
       <ch-line
         v-for="line in board"
         :key="line.id"
@@ -37,12 +37,6 @@ export default {
 
 <style lang="scss" scoped>
   .ch-board {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    margin: 0 auto;
-    width: 800px;
-    height: 800px;
     user-select: none;
   }
 </style>
