@@ -32,31 +32,40 @@ export default ({ color, position }, board) => {
     })
   }
 
-  // CHECK IF HAVE ANY PIECE IN DIAGONAL LEFT
+  // CHECK IF HAVE ANY PIECE IN DIAGONAL LEFT TO CAPTURE
   const diagonalLeft = search({
     x: calc(position.x, '+', 1),
     y: calc(position.y, '-', 1),
   })
   if (diagonalLeft.content) {
-    moves.push({
-      x: calc(position.x, '+', 1),
-      y: calc(position.y, '-', 1)
-    })
+    if (diagonalLeft.content.color !== color) {
+      moves.push({
+        x: calc(position.x, '+', 1),
+        y: calc(position.y, '-', 1)
+      })
+    }
   }
 
-  // CHECK IF HAVE ANY PIECE IN DIAGONAL RIGHT
+  // CHECK IF HAVE ANY PIECE IN DIAGONAL RIGHT TO CAPTURE
   const diagonalRight = search({
     x: calc(position.x, '+', 1),
     y: calc(position.y, '+', 1),
   })
   if (diagonalRight.content) {
-    moves.push({
-      x: calc(position.x, '+', 1),
-      y: calc(position.y, '+', 1)
-    })
+    if (diagonalRight.content.color !== color) {
+      moves.push({
+        x: calc(position.x, '+', 1),
+        y: calc(position.y, '+', 1)
+      })
+    }
   }
 
   // eslint-disable-next-line no-console
-  console.log(diagonalLeft.content, front.content, diagonalRight.content)
+  console.log(
+    moves,
+    diagonalLeft.content ? diagonalLeft.content.position : 'no left',
+    front.content ? front.content.position : 'no front',
+    diagonalRight.content ? diagonalRight.content.position : 'no right'
+  )
   return moves
 }

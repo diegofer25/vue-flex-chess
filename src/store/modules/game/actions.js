@@ -13,10 +13,24 @@ export default {
 
           if (state.pieces.some(({ captured, position }) => position.y === square.id && !captured)) {
 
-            square.content = state.pieces.find(({ position }) => {
+            if (line.id > 2 && line.id < 6) {
+              const piece = state.pieces.find(({ position }) => {
 
-              return position.y === square.id && position.x === line.id
-            })
+                return position.y === square.id && position.x === line.id
+              })
+              square.content = piece
+              // eslint-disable-next-line no-console
+              if (piece) console.log(line.id, square.id, piece.position)
+            } else {
+
+              square.content = state.pieces.find(({ position }) => {
+
+                return position.y === square.id && position.x === line.id
+              })
+
+            }
+
+
           } else {
             square.content = undefined
           }

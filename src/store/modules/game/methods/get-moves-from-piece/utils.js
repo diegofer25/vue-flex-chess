@@ -18,7 +18,8 @@ export const calcByColor = (color) => {
 
 export const searchPieceInBoard = (board) => {
   return ({x, y}) => {
-    const piece = board[x].squares[y]
+    const reversedBoard = JSON.parse(JSON.stringify(board)).reverse()
+    const piece = reversedBoard[x].squares[y]
     return piece ? piece : {}
   }
 }

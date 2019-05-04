@@ -1,0 +1,78 @@
+// FLEX CONTAINERS
+$direction-list: (row, row-reverse, column, column-reverse);
+$wrap-list: (nowrap, wrap, wrap-reverse);
+$justify-content-list: (
+  flex-start,
+  flex-end,
+  center,
+  space-between,
+  space-around,
+  space-evenly
+);
+$align-items-list: (stretch, flex-start, flex-end, center, baseline);
+$align-content-list: (
+  flex-start,
+  flex-end,
+  center,
+  space-between,
+  space-around,
+  stretch
+);
+
+.flex {
+  display: flex;
+}
+
+@each $direction in $direction-list {
+  .#{$direction} {
+    flex-direction: $direction;
+  }
+}
+
+@each $wrap in $wrap-list {
+  .#{$wrap} {
+    flex-wrap: $wrap;
+  }
+}
+
+@each $justify-content in $justify-content-list {
+  .justify-#{$justify-content} {
+    justify-content: $justify-content;
+  }
+}
+
+@each $align-items in $align-items-list {
+  .align-items-#{$align-items} {
+    align-items: $align-items;
+  }
+}
+
+@each $align-content in $align-content-list {
+  .align-content-#{$align-content} {
+    align-content: $align-content;
+  }
+}
+
+// FLEX ITEMS
+$numbers-list: (1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+$align-self-list: (auto, flex-start, flex-end, center, baseline, stretch);
+
+@each $number in $numbers-list {
+  .order-#{$number} {
+    order: $number;
+  }
+
+  .grow-#{$number} {
+    flex-grow: $number;
+  }
+
+  .shrink-#{$number} {
+    flex-shrink: $number;
+  }
+}
+
+@each $align-self in $align-self-list {
+  .align-self-#{$align-self} {
+    align-self: $align-self;
+  }
+}

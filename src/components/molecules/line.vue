@@ -3,7 +3,7 @@
     <div class="ch-line-wrapper">
       <ch-square
         v-for="(square, index) in line.squares"
-        :key="square.name"
+        :key="square.id"
         :color="checkColor(parseInt(line.name), index + 1)"
         :square="square"
         :position="{

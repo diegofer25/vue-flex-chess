@@ -3,7 +3,7 @@
     <div class="ch-board">
       <ch-line
         v-for="line in board"
-        :key="line.name"
+        :key="line.id"
         :line="line"
       />
     </div>
