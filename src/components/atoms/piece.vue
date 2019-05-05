@@ -1,13 +1,11 @@
 <template>
-  <div class="ch-piece">
-    <div class="piece" :class="[`${color}-piece`, { draggable }]">
-      <span
-        :draggable="draggable"
-        v-html="piece.value"
-        @dragstart="movePiece"
-        @dragend="finishMove(piece)"
-      />
-    </div>
+  <div class="ch-piece grow-1" :class="[`${color}-piece`, { draggable }]">
+    <span
+      :draggable="draggable"
+      v-html="piece.value"
+      @dragstart="movePiece"
+      @dragend="finishMove(piece)"
+    />
   </div>
 </template>
 
@@ -51,22 +49,15 @@ export default {
 
 <style lang="scss" scoped>
   .ch-piece {
-    flex-grow: 1;
-    height: 100%;
-    .piece {
-      font-size: 5.35rem;
-      text-align: center;
-      text-justify: auto;
-      &.draggable {
-        cursor: grab;
-      }
-      &.black-piece {
-        color: black;
-      }
-      &.white-piece {
-        color: white;
-        text-shadow: 1px 1px 5px #000000;
-      }
+    &.draggable {
+      cursor: grab;
+    }
+    &.black-piece {
+      color: black;
+    }
+    &.white-piece {
+      color: white;
+      text-shadow: 1px 1px 5px #000000;
     }
   }
 </style>

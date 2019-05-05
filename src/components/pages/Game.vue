@@ -1,33 +1,19 @@
 <template>
   <div class="ch-game bg-dark-grey text-white">
 
-    <div class="ch-layout flex column fill-height">
-      <div class="ch-player grow-2">
-        <div class="flex row">
-          <p class="text-xs-center m-y-none">Jogador 1</p>
-        </div>
+    <div class="flex row wrap justify-center">
+      <div class="xs-12 md-2 lg-3 xl-4">
+        <p class="text-xs-center">Player 1</p>
       </div>
-      <div class="ch-board grow-1">
-        <div class="flex row fill-height">
-          <div class="grow-2">
-            y axis
-          </div>
-          <div class="grow-1">
-            <div class="flex column fill-height">
-              <div class="grow-1 p-a-sm">
-                <ch-board />
-              </div>
-              <div class="grow-2">
-                x axis
-              </div>
-            </div>
+      <div class="xs-12 md-8 lg-6 xl-4">
+        <div class="flex column">
+          <div class="grow-1 p-a-sm">
+            <ch-board />
           </div>
         </div>
       </div>
-      <div class="ch-player grow-2">
-        <div class="flex row">
-          <p class="text-xs-center m-y-none">Jogador 2</p>
-        </div>
+      <div class="xs-12 md-2 lg-3 xl-4">
+        <p class="text-xs-center">Player 2</p>
       </div>
     </div>
 
@@ -35,7 +21,7 @@
 </template>
 
 <script>
-import chBoard from '@/components/organism/board.vue'
+import chBoard from '@/components/templates/board.vue'
 export default {
   name: 'ch-game',
   components: {

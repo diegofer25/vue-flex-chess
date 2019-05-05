@@ -1,19 +1,29 @@
 <template>
   <div
-    :class="`ch-square ${color}-square`"
+    ref="ch-square"
+    class="ch-square xs-12"
+    :class="`${color}-square`"
     @dragover.prevent
     @drop="getMove"
+    :style="{ height }"
   >
-    <div :class="{ 'can-move': square.canMove  }">
-      <slot />
+    <div class="flex row fill-height" :class="{ 'can-move': square.canMove  }">
+      <ch-piece
+        v-if="square.content"
+        :piece="square.content"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import chPiece from '@/components/atoms/piece'
 import { mapActions } from 'vuex'
 export default {
   name: 'ch-square',
+  components: {
+    chPiece
+  },
   props: {
     color: {
       type: String,
@@ -28,6 +38,18 @@ export default {
       type: Object,
       required: true
     }
+  },
+  data: () => ({
+    height: 0
+  }),
+  mounted() {
+    const vue = this
+    vue.$nextTick(() => {
+      vue.height = vue.$refs['ch-square'].clientWidth + 'px'
+      window.addEventListener('resize', () => {
+        vue.height = vue.$refs['ch-square'].clientWidth + 'px'
+      })
+    })
   },
   methods: {
     ...mapActions('game', [
@@ -51,7 +73,6 @@ export default {
 
 <style lang="scss" scoped>
   .ch-square {
-    width: 100px;
     &.white-square {
       background-color: rgb(255, 255, 255);
     }
@@ -59,8 +80,6 @@ export default {
       background-color: #757575;
     }
     .can-move {
-      height: 100%;
-      width: 100%;
       background-color: rgba(121, 201, 0, 0.5);
     }
   }
