@@ -36,13 +36,12 @@ export default {
     chLine
   },
   computed: {
-    ...mapState('game', ['board', { test: (state) => state }])
+    ...mapState('game', ['board'])
   },
   data: () => ({
     turn: 'white'
   }),
   created () {
-    console.log(this.test)
     this.updateBoard()
   },
   methods: {
