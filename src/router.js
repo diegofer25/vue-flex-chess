@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Game from '@/components/pages/Game.vue'
+import { chGame } from '@/components/pages'
 
 Vue.use(Router)
 
@@ -11,7 +11,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Game
+      component: chGame
     },
     // {
     //   path: '/about',

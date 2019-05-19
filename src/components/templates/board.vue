@@ -28,7 +28,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import chLine from '@/components/organisms/line'
+import { chLine } from '@/components/organisms'
 
 export default {
   name: 'ch-board',

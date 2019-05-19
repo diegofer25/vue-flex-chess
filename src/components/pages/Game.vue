@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import chBoard from '@/components/templates/board.vue'
+import { chBoard } from '@/components/templates'
 export default {
   name: 'ch-game',
   components: {

@@ -1,9 +1,9 @@
-import { layout } from '@/components/atoms'
+import { chLayout } from '@/components/atoms'
 
 export default {
   install: (Vue) => {
     // GLOBAL COMPONENTS
-    Vue.component('ch-layout', layout)
+    Vue.component('ch-layout', chLayout)
   }
 }
 

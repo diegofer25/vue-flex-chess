@@ -1,5 +1,5 @@
-import LAYOUT from './layout'
-import PIECE from './piece'
+import CH_LAYOUT from './layout'
+import CH_PIECE from './piece'
 
-export const layout = LAYOUT
-export const piece = PIECE
+export const chLayout = CH_LAYOUT
+export const chPiece = CH_PIECE

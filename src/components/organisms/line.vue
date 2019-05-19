@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import chSquare from '@/components/molecules/square'
+import { chSquare } from '@/components/molecules'
 export default {
   components: {
     chSquare

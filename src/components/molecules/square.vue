@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import chPiece from '@/components/atoms/piece'
+import { chPiece } from '@/components/atoms'
 import { mapActions } from 'vuex'
 export default {
   name: 'ch-square',
