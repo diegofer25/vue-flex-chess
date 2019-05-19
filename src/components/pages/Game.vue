@@ -1,7 +1,8 @@
 <template>
   <div class="ch-game bg-dark-grey text-white">
 
-    <div class="flex row wrap justify-center">
+    <!-- <div class="flex row wrap justify-center"> -->
+    <ch-layout row wrap justify-center>
       <div class="xs-12 md-2 lg-3 xl-4">
         <p class="text-xs-center">Player 1</p>
       </div>
@@ -15,7 +16,8 @@
       <div class="xs-12 md-2 lg-3 xl-4">
         <p class="text-xs-center">Player 2</p>
       </div>
-    </div>
+    </ch-layout>
+    <!-- </div> -->
 
   </div>
 </template>

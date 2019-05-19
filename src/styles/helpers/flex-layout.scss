@@ -48,7 +48,7 @@ $align-content-list: (
 }
 
 @each $align-content in $align-content-list {
-  .align-content-#{$align-content} {
+  .align-#{$align-content} {
     align-content: $align-content;
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="ch-line flex row nowrap fill-height" :class="`line-${line.name}`">
+  <div class="ch-line flex row nowrap" :class="`line-${line.name}`">
     <ch-square
       v-for="(square, index) in line.squares"
       :key="square.id"

@@ -1,5 +1,5 @@
 import pawnMove from '@/store/modules/game/methods/get-moves-from-piece/pawn-move'
-import { board } from '@/store/initial-state'
+import { board } from '@/store/cold-state'
 
 describe('Pawn White Moves', () => {
 

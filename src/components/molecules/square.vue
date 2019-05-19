@@ -1,13 +1,13 @@
 <template>
   <div
     ref="ch-square"
-    class="ch-square xs-12"
+    class="ch-square grow-1"
     :class="`${color}-square`"
     @dragover.prevent
     @drop="getMove"
     :style="{ height }"
   >
-    <div class="flex row fill-height" :class="{ 'can-move': square.canMove  }">
+    <div class="flex row" :class="{ 'can-move': square.canMove  }">
       <ch-piece
         v-if="square.content"
         :piece="square.content"
