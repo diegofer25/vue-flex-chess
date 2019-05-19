@@ -1,8 +1,8 @@
 <template>
   <div class="ch-board flex row justify-center">
     <div class="grow-1">
-      <div class="flex row">
-        <div class="grow-2">
+      <div class="flex row nowrap">
+        <div class="y-axis">
           y axis
         </div>
         <div class="grow-1">
@@ -15,7 +15,7 @@
                 <ch-line :line="line" />
               </div>
             </div>
-            <div class="grow-2">
+            <div class="x-axis">
               x axis
             </div>
           </div>
