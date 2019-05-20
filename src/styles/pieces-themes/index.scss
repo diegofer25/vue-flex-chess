@@ -1,0 +1,46 @@
+$themes-list: (
+  'default': (
+    ('/assets/img/pieces/default.png'),
+    (
+      'white-pawn': (34,51,-27,-37),
+      'white-rook': (38,66,-88,-22),
+      'white-knight': (43,70,-158,-18),
+      'white-bishop': (38,72,-225,-16),
+      'white-queen': (38,66,-291,-22),
+      'white-king': (38,72,-354,-16),
+
+      'black-pawn': (34,51,-27,-126),
+      'black-rook': (38,66,-88,-111),
+      'black-knight': (43,70,-158,-106),
+      'black-bishop': (38,72,-225,-104),
+      'black-queen': (38,66,-291,-111),
+      'black-king': (38,72,-354,-105),
+    )
+  )
+);
+
+@each $theme in $themes-list {
+  $theme-name: nth($theme, 1);
+  $theme-values: nth($theme, 2);
+
+  .piece-theme-#{$theme-name} {
+    $theme-image: nth($theme-values, 1);
+    $theme-pieces: nth($theme-values, 2);
+
+    @each $piece in $theme-pieces {
+      $piece-name: nth($piece, 1);
+      $piece-values: nth($piece, 2);
+
+      &.#{$piece-name} {
+        $width: nth($piece-values, 1);
+        $height: nth($piece-values, 2);
+        $bg-width: nth($piece-values, 3);
+        $bg-height: nth($piece-values, 4);
+
+        background: url($theme-image) no-repeat #{$bg-width}px #{$bg-height}px;
+      	width: #{$width}px;
+      	height: #{$height}px;
+      }
+    }
+  }
+}

@@ -1,17 +1,24 @@
 <template>
-  <div class="ch-piece grow-1" :class="[`${color}-piece`, { draggable }]">
-    <span
-      :draggable="draggable"
-      v-html="piece.value"
-      @dragstart="movePiece"
-      @dragend="finishMove(piece)"
-    />
+  <div
+    class="ch-piece grow-1 fill-height"
+    :class="[`${color}-piece`, { draggable }]"
+  >
+    <div class="flex row fill-height justify-center align-items-center">
+      <div
+        class="piece-theme-default"
+        :class="`piece-theme-default ${piece.color}-${piece.name}`"
+        :draggable="draggable"
+        @dragstart="movePiece"
+        @dragend="togglePermitiveMoves({ piece, flag: false })"
+        @click="showPermitiveMoves(piece)"
+      />
+    </div>
   </div>
 </template>
 
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   name: 'ch-piece',
   props: {
@@ -31,16 +38,23 @@ export default {
   },
   methods: {
     ...mapActions('game', [
-      'showMoves',
-      'finishMove',
+      'togglePermitiveMoves'
     ]),
+    ...mapMutations('game', ['SET_HELD_PIECE']),
     movePiece (event) {
       if (this.piece.color === this.turn) {
-        this.showMoves(this.piece)
+        this.togglePermitiveMoves({ piece: this.piece, flag: true })
         event.dataTransfer.setData("pieceId", this.piece.id)
       } else {
         // eslint-disable-next-line no-console
         console.log('Is not your turn')
+      }
+    },
+
+    showPermitiveMoves (piece) {
+      if (this.piece.color === this.turn) {
+        this.SET_HELD_PIECE(piece.id)
+        this.togglePermitiveMoves({ piece, flag: true })
       }
     }
   },
@@ -48,7 +62,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '@/styles/pieces-themes/index.scss';
   .ch-piece {
+    font-size: 100%;
     &.draggable {
       cursor: grab;
     }
@@ -58,6 +74,9 @@ export default {
     &.white-piece {
       color: white;
       text-shadow: 1px 1px 5px #000000;
+    }
+    p {
+      font-size: 4rem;
     }
   }
 </style>

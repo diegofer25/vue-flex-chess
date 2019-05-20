@@ -1,13 +1,14 @@
 <template>
   <div
     ref="ch-square"
-    class="ch-square grow-1"
+    class="ch-square xs-12"
     :class="`${color}-square`"
     @dragover.prevent
     @drop="getMove"
+    @click="makeMove"
     :style="{ height }"
   >
-    <div class="flex row" :class="{ 'can-move': square.canMove  }">
+    <div class="flex row fill-height" :class="{ 'can-move': square.canMove  }">
       <ch-piece
         v-if="square.content"
         :piece="square.content"
@@ -18,7 +19,7 @@
 
 <script>
 import { chPiece } from '@/components/atoms'
-import { mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   name: 'ch-square',
   components: {
@@ -39,6 +40,9 @@ export default {
       required: true
     }
   },
+  computed: {
+    ...mapState('game', ['heldPiece'])
+  },
   data: () => ({
     height: 0
   }),
@@ -55,16 +59,26 @@ export default {
     ...mapActions('game', [
       'endTurn',
       'setPiecePosition',
-      'finishMove'
+      'hidePermitiveMoves'
     ]),
+    ...mapMutations('game', ['SET_HELD_PIECE']),
     getMove (e) {
       const vue = this
       e.preventDefault();
       var id = parseInt(e.dataTransfer.getData("pieceId"))
       if (vue.square.canMove) {
-        vue.setPiecePosition({ id, newPosition: this.position })
-        vue.finishMove()
+        vue.setPiecePosition({ id, newPosition: this.position, color: this.color })
+        vue.hidePermitiveMoves()
         vue.endTurn()
+      }
+    },
+
+    makeMove () {
+      if (this.heldPiece && this.square.canMove) {
+        this.setPiecePosition({ id: this.heldPiece, newPosition: this.position, color: this.color  })
+        this.hidePermitiveMoves()
+        this.endTurn()
+        this.SET_HELD_PIECE(null)
       }
     }
   },

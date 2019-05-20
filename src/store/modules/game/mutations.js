@@ -9,5 +9,9 @@ export default {
 
   SET_PIECES (state, pieces) {
     state.pieces = pieces
+  },
+
+  SET_HELD_PIECE (state, heldPiece) {
+    state.heldPiece = heldPiece
   }
 }

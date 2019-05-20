@@ -8,12 +8,7 @@
         <div class="grow-1">
           <div class="flex-column">
             <div class="grow-1">
-              <div
-                v-for="line in board"
-                :key="line.id"
-              >
-                <ch-line :line="line" />
-              </div>
+              <ch-line v-for="line in board" :line="line" :key="line.id" />
             </div>
             <div class="x-axis">
               x axis

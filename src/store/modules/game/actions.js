@@ -5,16 +5,17 @@ export default {
   },
 
   updateBoard ({ state, commit }) {
-    commit('SET_BOARD', state.board.map(line => {
+    const { board, pieces } = state
+    commit('SET_BOARD', board.map(line => {
 
-      if (state.pieces.some(({ captured, position }) => position.x === line.id && !captured)) {
+      if (pieces.some(({ captured, position }) => position.x === line.id && !captured)) {
 
         line.squares = line.squares.map(square => {
 
-          if (state.pieces.some(({ captured, position }) => position.y === square.id && !captured)) {
+          if (pieces.some(({ captured, position }) => position.y === square.id && !captured)) {
 
             if (line.id > 2 && line.id < 6) {
-              const piece = state.pieces.find(({ position }) => {
+              const piece = pieces.find(({ position }) => {
 
                 return position.y === square.id && position.x === line.id
               })
@@ -23,7 +24,7 @@ export default {
               if (piece) console.log(line.id, square.id, piece.position)
             } else {
 
-              square.content = state.pieces.find(({ position }) => {
+              square.content = pieces.find(({ position }) => {
 
                 return position.y === square.id && position.x === line.id
               })
@@ -38,8 +39,9 @@ export default {
         })
       } else {
         line.squares = line.squares.map(square => {
-
-          square.content = undefined
+          if (square.content) {
+            square.content = undefined
+          }
           return square
         })
       }
@@ -47,7 +49,7 @@ export default {
     }))
   },
 
-  showMoves ({ state, commit, getters }, piece) {
+  togglePermitiveMoves ({ state, commit, getters }, { piece, flag }) {
 
     const moves = getters.getMovesFromPiece(piece)
 
@@ -58,7 +60,9 @@ export default {
         line.squares = line.squares.map(square => {
 
           if (moves.some(m => m.y === square.id)) {
-            square.canMove = true
+            square.canMove = flag
+          } else {
+            square.canMove = false
           }
           return square
         })
@@ -68,7 +72,7 @@ export default {
     }))
   },
 
-  finishMove ({ state, commit }) {
+  hidePermitiveMoves ({ state, commit }) {
     commit('SET_BOARD', state.board.map(line => {
 
       line.squares = line.squares.map(square => {
@@ -82,12 +86,15 @@ export default {
     }))
   },
 
-  setPiecePosition ({ state, commit, dispatch }, { id, newPosition }) {
-    commit('SET_PIECES', state.pieces.map(piece => {
-      if (piece.x === newPosition.x && piece.y === newPosition.y) {
+  setPiecePosition ({ state, commit, dispatch }, { id, newPosition, color }) {
+    const { board, pieces } = state
+    commit('SET_PIECES', pieces.map(piece => {
+      if (piece.x === newPosition.x && piece.y === newPosition.y && piece.color !== color) {
         piece.captured = true
       }
       if (piece.id === id) {
+        board[piece.position.x].squares[piece.position.y].content = undefined
+        commit('SET_BOARD', board)
         piece.position = newPosition
       }
       return piece
