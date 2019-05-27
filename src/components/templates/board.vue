@@ -22,7 +22,7 @@
 
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import { chLine } from '@/components/organisms'
 
 export default {
@@ -35,13 +35,7 @@ export default {
   },
   data: () => ({
     turn: 'white'
-  }),
-  created () {
-    this.updateBoard()
-  },
-  methods: {
-    ...mapActions('game', ['updateBoard']),
-  },
+  })
 }
 </script>
 

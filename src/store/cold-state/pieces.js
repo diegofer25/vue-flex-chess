@@ -4,7 +4,6 @@ export default [
     name: "king",
     color: "white",
     value: "&#9818",
-    captured: false,
     position: {
       x: 0,
       y: 4
@@ -15,7 +14,6 @@ export default [
     name: "queen",
     color: "white",
     value: "&#9819",
-    captured: false,
     position: {
       x: 0,
       y: 3
@@ -26,7 +24,6 @@ export default [
     name: "rook",
     color: "white",
     value: "&#9820",
-    captured: false,
     position: {
       x: 0,
       y: 0
@@ -37,7 +34,6 @@ export default [
     name: "rook",
     color: "white",
     value: "&#9820",
-    captured: false,
     position: {
       x: 0,
       y: 7
@@ -48,7 +44,6 @@ export default [
     name: "bishop",
     color: "white",
     value: "&#9821",
-    captured: false,
     position: {
       x: 0,
       y: 2
@@ -59,7 +54,6 @@ export default [
     name: "bishop",
     color: "white",
     value: "&#9821",
-    captured: false,
     position: {
       x: 0,
       y: 5
@@ -70,7 +64,6 @@ export default [
     name: "knight",
     color: "white",
     value: "&#9822",
-    captured: false,
     position: {
       x: 0,
       y: 1
@@ -81,7 +74,6 @@ export default [
     name: "knight",
     color: "white",
     value: "&#9822",
-    captured: false,
     position: {
       x: 0,
       y: 6
@@ -92,7 +84,6 @@ export default [
     name: "pawn",
     color: "white",
     value: "&#9823",
-    captured: false,
     position: {
       x: 1,
       y: 0
@@ -103,7 +94,6 @@ export default [
     name: "pawn",
     color: "white",
     value: "&#9823",
-    captured: false,
     position: {
       x: 1,
       y: 1
@@ -114,7 +104,6 @@ export default [
     name: "pawn",
     color: "white",
     value: "&#9823",
-    captured: false,
     position: {
       x: 1,
       y: 2
@@ -125,7 +114,6 @@ export default [
     name: "pawn",
     color: "white",
     value: "&#9823",
-    captured: false,
     position: {
       x: 1,
       y: 3
@@ -136,7 +124,6 @@ export default [
     name: "pawn",
     color: "white",
     value: "&#9823",
-    captured: false,
     position: {
       x: 1,
       y: 4
@@ -147,7 +134,6 @@ export default [
     name: "pawn",
     color: "white",
     value: "&#9823",
-    captured: false,
     position: {
       x: 1,
       y: 5
@@ -158,7 +144,6 @@ export default [
     name: "pawn",
     color: "white",
     value: "&#9823",
-    captured: false,
     position: {
       x: 1,
       y: 6
@@ -169,7 +154,6 @@ export default [
     name: "pawn",
     color: "white",
     value: "&#9823",
-    captured: false,
     position: {
       x: 1,
       y: 7
@@ -180,7 +164,6 @@ export default [
     name: "king",
     color: "black",
     value: "&#9818",
-    captured: false,
     position: {
       x: 7,
       y: 4
@@ -191,7 +174,6 @@ export default [
     name: "queen",
     color: "black",
     value: "&#9819",
-    captured: false,
     position: {
       x: 7,
       y: 3
@@ -202,7 +184,6 @@ export default [
     name: "rook",
     color: "black",
     value: "&#9820",
-    captured: false,
     position: {
       x: 7,
       y: 0
@@ -213,7 +194,6 @@ export default [
     name: "rook",
     color: "black",
     value: "&#9820",
-    captured: false,
     position: {
       x: 7,
       y: 7
@@ -224,7 +204,6 @@ export default [
     name: "bishop",
     color: "black",
     value: "&#9821",
-    captured: false,
     position: {
       x: 7,
       y: 2
@@ -235,7 +214,6 @@ export default [
     name: "bishop",
     color: "black",
     value: "&#9821",
-    captured: false,
     position: {
       x: 7,
       y: 5
@@ -246,7 +224,6 @@ export default [
     name: "knight",
     color: "black",
     value: "&#9822",
-    captured: false,
     position: {
       x: 7,
       y: 6
@@ -257,7 +234,6 @@ export default [
     name: "knight",
     color: "black",
     value: "&#9822",
-    captured: false,
     position: {
       x: 7,
       y: 1
@@ -268,7 +244,6 @@ export default [
     name: "pawn",
     color: "black",
     value: "&#9823",
-    captured: false,
     position: {
       x: 6,
       y: 0
@@ -279,7 +254,6 @@ export default [
     name: "pawn",
     color: "black",
     value: "&#9823",
-    captured: false,
     position: {
       x: 6,
       y: 1
@@ -290,7 +264,6 @@ export default [
     name: "pawn",
     color: "black",
     value: "&#9823",
-    captured: false,
     position: {
       x: 6,
       y: 2
@@ -301,7 +274,6 @@ export default [
     name: "pawn",
     color: "black",
     value: "&#9823",
-    captured: false,
     position: {
       x: 6,
       y: 3
@@ -312,7 +284,6 @@ export default [
     name: "pawn",
     color: "black",
     value: "&#9823",
-    captured: false,
     position: {
       x: 6,
       y: 4
@@ -323,7 +294,6 @@ export default [
     name: "pawn",
     color: "black",
     value: "&#9823",
-    captured: false,
     position: {
       x: 6,
       y: 5
@@ -334,7 +304,6 @@ export default [
     name: "pawn",
     color: "black",
     value: "&#9823",
-    captured: false,
     position: {
       x: 6,
       y: 6
@@ -345,7 +314,6 @@ export default [
     name: "pawn",
     color: "black",
     value: "&#9823",
-    captured: false,
     position: {
       x: 6,
       y: 7

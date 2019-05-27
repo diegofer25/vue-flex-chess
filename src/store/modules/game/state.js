@@ -1,8 +1,8 @@
-import { board, pieces } from '@/store/cold-state'
+import { board } from '@/store/cold-state'
 
 export default {
-  turn: 'white',
   board,
-  pieces,
-  heldPiece: null
+  captureds: [],
+  heldPiece: null,
+  turn: 'white',
 }
